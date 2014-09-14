@@ -11,7 +11,7 @@ module SocialShareButton
         extra_data = opts.select { |k, _| k.to_s.start_with?('data') } if name.eql?('tumblr')
 
         link_title = t "social_share_button.share_to", :name => t("social_share_button.#{name.downcase}")
-        html = "<div class='share-box'>"
+        html << "<div class='share-box'>"
         html << "<a href='#' id='social-share-button-#{name}-count' class='count'></a>"
         html << link_to("","#", {:rel => ["nofollow", rel],
                                   "data-site" => name,
