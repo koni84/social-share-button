@@ -17,6 +17,7 @@ module SocialShareButton
                                   :id => "social-share-button-#{name}",
                                   :onclick => "return SocialShareButton.share(this);",
                                   :title => h(link_title)}.merge(extra_data))
+        html << "<p id='social-share-button-#{name}-count'></p>"
       end
       html << "</div>"
       raw html.join("\n")
