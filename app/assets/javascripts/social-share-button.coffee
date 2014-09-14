@@ -5,7 +5,7 @@ window.SocialShareButton =
 
   share : (el) ->
     site = $(el).data('site')
-    $parent = $(el).parent()
+    $parent = $(el).parent().parent()
     title = encodeURIComponent($parent.data('title') || '')
     img = encodeURIComponent($parent.data("img") || '')
     url = encodeURIComponent($parent.data("url") || '')
