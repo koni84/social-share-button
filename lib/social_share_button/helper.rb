@@ -12,8 +12,7 @@ module SocialShareButton
 
         link_title = t "social_share_button.share_to", :name => t("social_share_button.#{name.downcase}")
         html << "<div class='share-box'>"
-        html << link_to("","#", {:class => "count",
-                                :id => "social-share-button-#{name}-count")
+        html << link_to("","#", :class => "count", :id => "social-share-button-#{name}-count")
 
         html << link_to("","#", {:rel => ["nofollow", rel],
                                   "data-site" => name,
