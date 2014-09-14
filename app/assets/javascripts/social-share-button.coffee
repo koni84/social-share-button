@@ -11,7 +11,7 @@ window.SocialShareButton =
     url = encodeURIComponent($parent.data("url") || '')
     via = encodeURIComponent($parent.data("via") || '')
     desc = encodeURIComponent($parent.data("desc") || ' ')
-    
+
     if url.length == 0
       url = encodeURIComponent(location.href)
     switch site
@@ -20,7 +20,7 @@ window.SocialShareButton =
       when "weibo"
         SocialShareButton.openUrl("http://service.weibo.com/share/share.php?url=#{url}&type=3&pic=#{img}&title=#{title}")
       when "twitter"
-        SocialShareButton.openUrl("https://twitter.com/intent/tweet?url=#{url}&text=#{title}&via='BTCFunding'")
+        SocialShareButton.openUrl("https://twitter.com/intent/tweet?url=#{url}&text=#{title}&via=#{via}")
       when "douban"
         SocialShareButton.openUrl("http://shuo.douban.com/!service/share?href=#{url}&name=#{title}&image=#{img}&sel=#{desc}")
       when "facebook"
