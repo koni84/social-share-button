@@ -43,7 +43,7 @@ window.SocialShareButton =
         SocialShareButton.openUrl("http://www.delicious.com/save?url=#{url}&title=#{title}&jump=yes&pic=#{img}")
       when "plurk"
         SocialShareButton.openUrl("http://www.plurk.com/?status=#{title}: #{url}&qualifier=shares")
-      when "linkedIn"
+      when "linkedin"
         SocialShareButton.openUrl("https://www.linkedin.com/cws/share?url=#{url}")
       when "pinterest"
         SocialShareButton.openUrl("http://www.pinterest.com/pin/create/button/?url=#{url}&media=#{img}&description=#{title}")
