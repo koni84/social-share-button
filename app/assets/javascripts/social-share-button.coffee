@@ -17,7 +17,8 @@ window.SocialShareButton =
       url = encodeURIComponent(location.href)
 
     if (referrer == "true")
-      url + "%3Fref%3D" + site
+      alert(referrer)
+      url = url + "%3Fref%3D" + site
 
     switch site
       when "email"
