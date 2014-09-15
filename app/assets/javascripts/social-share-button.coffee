@@ -8,45 +8,45 @@ window.SocialShareButton =
     $parent = $(el).parent().parent()
     title = encodeURIComponent($parent.data('title') || '')
     img = encodeURIComponent($parent.data("img") || '')
-    url = encodeURIComponent($parent.data("url") || '')
+    url = encodeURIComponent($parent.data("url").split('?')[0] || '')
     via = encodeURIComponent($parent.data("via") || '')
     desc = encodeURIComponent($parent.data("desc") || ' ')
 
     if url.length == 0
-      url = encodeURIComponent(location.href)
+      url = encodeURIComponent(location.href.split('?')[0])
     switch site
       when "email"
-        location.href = "mailto:?to=&subject=#{title}&body=#{url}"
+        location.href = "mailto:?to=&subject=#{title}&body=#{url}%3Fref%3Demail"
       when "weibo"
-        SocialShareButton.openUrl("http://service.weibo.com/share/share.php?url=#{url}&type=3&pic=#{img}&title=#{title}")
+        SocialShareButton.openUrl("http://service.weibo.com/share/share.php?url=#{url}%3Fref%3Dweibo&type=3&pic=#{img}&title=#{title}")
       when "twitter"
-        SocialShareButton.openUrl("https://twitter.com/intent/tweet?url=#{url}&text=#{title}&via=#{via}")
+        SocialShareButton.openUrl("https://twitter.com/intent/tweet?url=#{url}%3Fref%3Dtwitter&text=#{title}&via=#{via}")
       when "douban"
-        SocialShareButton.openUrl("http://shuo.douban.com/!service/share?href=#{url}&name=#{title}&image=#{img}&sel=#{desc}")
+        SocialShareButton.openUrl("http://shuo.douban.com/!service/share?href=#{url}%3Fref%3Ddouban&name=#{title}&image=#{img}&sel=#{desc}")
       when "facebook"
-        SocialShareButton.openUrl("http://www.facebook.com/sharer.php?u=#{url}")
+        SocialShareButton.openUrl("http://www.facebook.com/sharer.php?u=#{url}%3Fref%3Dfacebook")
       when "qq"
-        SocialShareButton.openUrl("http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=#{url}&title=#{title}&pics=#{img}&summary=#{desc}")
+        SocialShareButton.openUrl("http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=#{url}%3Fref%3Dqq&title=#{title}&pics=#{img}&summary=#{desc}")
       when "tqq"
-        SocialShareButton.openUrl("http://share.v.t.qq.com/index.php?c=share&a=index&url=#{url}&title=#{title}&pic=#{img}")
+        SocialShareButton.openUrl("http://share.v.t.qq.com/index.php?c=share&a=index&url=#{url}%3Fref%3Dtqq&title=#{title}&pic=#{img}")
       when "baidu"
-        SocialShareButton.openUrl("http://hi.baidu.com/pub/show/share?url=#{url}&title=#{title}&content=#{desc}")
+        SocialShareButton.openUrl("http://hi.baidu.com/pub/show/share?url=#{url}%3Fref%3Dbaidu&title=#{title}&content=#{desc}")
       when "kaixin001"
-        SocialShareButton.openUrl("http://www.kaixin001.com/rest/records.php?url=#{url}&content=#{title}&style=11&pic=#{img}")
+        SocialShareButton.openUrl("http://www.kaixin001.com/rest/records.php?url=#{url}%3Fref%3Dkaixin001&content=#{title}&style=11&pic=#{img}")
       when "renren"
-        SocialShareButton.openUrl("http://widget.renren.com/dialog/share?resourceUrl=#{url}&srcUrl=#{url}&title=#{title}&pic=#{img}&description=#{desc}")
+        SocialShareButton.openUrl("http://widget.renren.com/dialog/share?resourceUrl=#{url}%3Fref%3Drenren&srcUrl=#{url}%3Fref=renren&title=#{title}&pic=#{img}&description=#{desc}")
       when "google_plus"
-        SocialShareButton.openUrl("https://plus.google.com/share?url=#{url}")
+        SocialShareButton.openUrl("https://plus.google.com/share?url=#{url}%3Fref%3Dgoogleplus")
       when "google_bookmark"
-        SocialShareButton.openUrl("https://www.google.com/bookmarks/mark?op=edit&output=popup&bkmk=#{url}&title=#{title}")
+        SocialShareButton.openUrl("https://www.google.com/bookmarks/mark?op=edit&output=popup&bkmk=#{url}%3Fref%3Dgooglebookmark&title=#{title}")
       when "delicious"
-        SocialShareButton.openUrl("http://www.delicious.com/save?url=#{url}&title=#{title}&jump=yes&pic=#{img}")
+        SocialShareButton.openUrl("http://www.delicious.com/save?url=#{url}%3Fref%3Ddelicious&title=#{title}&jump=yes&pic=#{img}")
       when "plurk"
-        SocialShareButton.openUrl("http://www.plurk.com/?status=#{title}: #{url}&qualifier=shares")
+        SocialShareButton.openUrl("http://www.plurk.com/?status=#{title}: #{url}%3Fref%3Dplurk&qualifier=shares")
       when "linkedin"
-        SocialShareButton.openUrl("https://www.linkedin.com/cws/share?url=#{url}")
+        SocialShareButton.openUrl("https://www.linkedin.com/cws/share?url=#{url}%3Fref%3Dlinkedin")
       when "pinterest"
-        SocialShareButton.openUrl("http://www.pinterest.com/pin/create/button/?url=#{url}&media=#{img}&description=#{title}")
+        SocialShareButton.openUrl("http://www.pinterest.com/pin/create/button/?url=#{url}%3Fref%3Dpinterest&media=#{img}&description=#{title}")
       when "tumblr"
         get_tumblr_extra = (param) ->
           cutom_data = $(el).attr("data-#{param}")
@@ -70,7 +70,7 @@ window.SocialShareButton =
             else # actually, it's a link clause
               title = get_tumblr_extra('title') || title
               url = get_tumblr_extra('url') || url
-              "name=#{title}&url=#{url}"
+              "name=#{title}&url=#{url}%3Fref%3Dtumblr"
 
 
           "/#{path}?#{params}"
