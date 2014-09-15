@@ -11,12 +11,12 @@ window.SocialShareButton =
     url = encodeURIComponent($parent.data("url") || '')
     via = encodeURIComponent($parent.data("via") || '')
     desc = encodeURIComponent($parent.data("desc") || ' ')
-    referral = encodeURIComponent($parent.data("referral") || '')
+    referrer = encodeURIComponent($parent.data("referrer") || '')
 
     if url.length == 0
       url = encodeURIComponent(location.href)
 
-    if referral
+    if referrer == "true"
       url = url + "&ref=" + site
       url = encodeURIComponent(url)
     switch site
