@@ -13,12 +13,14 @@ window.SocialShareButton =
     desc = encodeURIComponent($parent.data("desc") || ' ')
     referrer = encodeURIComponent($parent.data("referrer") || '')
 
-    if url.length == 0
-      url = encodeURIComponent(location.href)
+    if (url.length == 0)
+      console.log(referrer)
+      if (referrer == "true")
+        url + "&ref=" + site
+        url = encodeURIComponent(url)
+      else
+        url = encodeURIComponent(location.href)
 
-    if referrer == "true"
-      url = url + "&ref=" + site
-      url = encodeURIComponent(url)
     switch site
       when "email"
         location.href = "mailto:?to=&subject=#{title}&body=#{url}"
