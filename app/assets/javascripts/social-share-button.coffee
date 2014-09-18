@@ -14,7 +14,7 @@ window.SocialShareButton =
     referrer = encodeURIComponent($parent.data("referrer") || '')
 
     if (url.length == 0)
-      url = encodeURIComponent(location.href)
+      url = encodeURIComponent(location.href.split('?')[0])
 
     if (referrer == "true")
       url = url + "%3Fref%3D" + site
